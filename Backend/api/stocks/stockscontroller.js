@@ -23,4 +23,4 @@ const getStockHistory = async (req, res) => {
   }
 };
 
-module.exports = { getStocks, getStock, getStockHistory, getAllSymbols, getj };
+module.exports = { getStockHistory };

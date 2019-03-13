@@ -1,55 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './App.css';
-import Home from './Home/Home';
-import Nav from './Nav/Nav'
+import "./App.css";
+import Home from "./Components/Home/Home";
+//import Nav from './Nav/Nav'
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../src/actions/index';
-
+import { connect } from "react-redux";
+import * as actionCreators from "../src/actions/index";
 
 class App extends Component {
-  
-  async componentDidMount(){
-   
-
-       await this.props.loadStockTable(this.props.portifolioDefaultStocks);
-
+  async componentDidMount() {
+    await this.props.loadStockTable(this.props.portifolioDefaultStocks);
   }
 
-
   render() {
-     
-
-
     return (
       <div className="App">
-      <Nav/>
-     
-         <Home />
+        <Home />
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    portifolioDefaultStocks: state.StocksR.portifolioStocks
+  };
+};
 
-const mapStateToProps = (state) => {
-
-  return (
-      {
-        portifolioDefaultStocks: state.StocksR.portifolioStocks
-      }
-  )
-
-}
-
-const mapDispathToProps = (dispatch) => {
-  return ({
+const mapDispathToProps = dispatch => {
+  return {
     //  byNow: (pId) => { dispatch(actionCreators.buyNow(pId)) },
-    loadStockTable: (defaultStocks) => { dispatch(actionCreators.loadStockTable(defaultStocks)) }
+    loadStockTable: defaultStocks => {
+      dispatch(actionCreators.loadStockTable(defaultStocks));
+    }
+  };
+};
 
-  });
-}
-
-
-export default connect(mapStateToProps, mapDispathToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispathToProps
+)(App);

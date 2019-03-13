@@ -1,83 +1,59 @@
-import React, { Component } from 'react'
-import { Layout} from 'antd';
+import React, { Component } from "react";
+import { Layout } from "antd";
+import { connect } from "react-redux";
 
-import SiderComp from '../SiderComponent/SiderComp'
-import Stocks from '../Stocks/Stocks';
-import Company from '../Company/Company'
-import * as actionCreators from '../actions/index';
-import { connect } from 'react-redux';
+// import SiderComp from '../SiderComponent/SiderComp'
+// import Stocks from '../Stocks/Stocks';
+// import Company from '../Company/Company'
+// import * as actionCreators from '../actions/index';
 
 class Home extends Component {
+  // state ={
+  //     isSearched:false,
+  //     isDetailedView:false,
+  //     ShowCompanySymbol:""
 
-    state ={
-        isSearched:false,
-        isDetailedView:false,
-        ShowCompanySymbol:""
-         
-        
-    }
-    
-    render() {
-        
-        const isSearch = (c) => {
-            
-            this.setState({isSearched:true})
-        }
-        const clearSearch = () => {
-            this.setState({isSearched:false});
-            /// call api to get selected portifolio
-            this.props.clearStock(this.props.portifolioDefaultStocks);
-        }
+  // }
 
-        const ShowCompany = (a) =>{
-            this.setState({isDetailedView:true,ShowCompanySymbol:a});
+  render() {
+    // const isSearch = (c) => {
 
-        }
-        const showDefault =() =>{
-            this.setState({isDetailedView:false})
-        }
+    //     this.setState({isSearched:true})
+    // }
+    // const clearSearch = () => {
+    //     this.setState({isSearched:false});
+    //     /// call api to get selected portifolio
+    //     this.props.clearStock(this.props.portifolioDefaultStocks);
+    // }
 
-        const {  SearchorselstockFun } = this.props;
+    // const ShowCompany = (a) =>{
+    //     this.setState({isDetailedView:true,ShowCompanySymbol:a});
 
-      
-        return (
-            <div>
-          
-                <Layout>
+    // }
+    // const showDefault =() =>{
+    //     this.setState({isDetailedView:false})
+    // }
 
-                    <SiderComp Searchorselstockfun={SearchorselstockFun} isSearchFun={isSearch} />
-                    
-                   
-                { (!this.state.isDetailedView) ? 
-                (<Stocks isDetailViewFun={ShowCompany}  isSearchedprop={this.state.isSearched} clearSearchFun={clearSearch} />) 
-                  :   <Company showDefaultFun={showDefault} symbol={this.state.ShowCompanySymbol} />
-            }
+    // const {  SearchorselstockFun } = this.props;
 
-                </Layout>
-            </div>
-        )
-    }
+    return <div>d</div>;
+  }
 }
 
+const mapStateToProps = state => {
+  return {
+    portifolioDefaultStocks: state.StocksR.portifolioStocks
+  };
+};
 
-const mapStateToProps = (state) => {
+const mapDispathToProps = dispatch => {
+  return {
+    //  byNow: (pId) => { dispatch(actionCreators.buyNow(pId)) },
+    // clearStock: (e) => { dispatch(actionCreators.clearSearchStock(e)) }
+  };
+};
 
-    return (
-        {
-          portifolioDefaultStocks: state.StocksR.portifolioStocks,
-         
-        }
-    )
-  
-  }
-
-const mapDispathToProps = (dispatch) => {
-    return ({
-      //  byNow: (pId) => { dispatch(actionCreators.buyNow(pId)) },
-      clearStock: (e) => { dispatch(actionCreators.clearSearchStock(e)) }
-  
-    });
-  }
-  
-  
-  export default connect(mapStateToProps, mapDispathToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispathToProps
+)(Home);
