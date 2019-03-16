@@ -13,11 +13,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "collections": "^5.1.8",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "mongo-round": "^1.0.0",
     "mongoose": "^5.4.5",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "swift-parser": "^0.1.2"
   }
 }

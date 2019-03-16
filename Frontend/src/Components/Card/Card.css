@@ -1,0 +1,22 @@
+tr,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.write {
+  cursor: pointer;
+  width: 100%;
+  padding: 1px;
+  height: 3rem;
+  top: 12px;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 3px;
+  color: #0a0a0a;
+  color: var(--theme-top-bar-write-color, #0a0a0a);
+  background: #cfd7ff;
+  border: 1px solid #4e57ef;
+  box-shadow: 3px 4px 0 #4e57ef;
+}

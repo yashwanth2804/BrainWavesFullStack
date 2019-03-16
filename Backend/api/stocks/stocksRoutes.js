@@ -2,7 +2,7 @@ const express = require("express");
 const restaurantscontroller = require("./stockscontroller");
 const mongoose = require("mongoose");
 
-var mongoDB = "mongodb://127.0.0.1/market_db";
+var mongoDB = "mongodb://127.0.0.1/onetoone_db_1";
 //mongodb://<dbuser>:<dbpassword>@ds161894.mlab.com:61894/restaurants_db
 //var mongoDB = 'mongodb://hackerEarth:'+process.env.dbpwd+'@ds161894.mlab.com:61894/restaurants_db';
 mongoose.set("useCreateIndex", true);
@@ -24,9 +24,7 @@ Stockrouter.use(
 // Stockrouter.route('/getStocks/:skip').get(restaurantscontroller.getStocks);
 // Stockrouter.route('/getStock/:symbol').get(restaurantscontroller.getStock);
 
-Stockrouter.route("/getHistory/:symbol").get(
-  restaurantscontroller.getStockHistory
-);
+Stockrouter.route("/getAll").get(restaurantscontroller.getAll);
 // Stockrouter.route('/getAllSymbol').get(restaurantscontroller.getAllSymbols);
 
 module.exports = Stockrouter;

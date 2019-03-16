@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 // import SiderComp from '../SiderComponent/SiderComp'
 // import Stocks from '../Stocks/Stocks';
 // import Company from '../Company/Company'
-// import * as actionCreators from '../actions/index';
+import * as actionCreators from "../../actions/index";
+import Cards from "../Cards/Cards";
 
 class Home extends Component {
   // state ={
@@ -15,6 +16,9 @@ class Home extends Component {
 
   // }
 
+  // componentDidMount() {
+  //   this.props.onLoad();
+  // }
   render() {
     // const isSearch = (c) => {
 
@@ -36,20 +40,22 @@ class Home extends Component {
 
     // const {  SearchorselstockFun } = this.props;
 
-    return <div>d</div>;
+    return <Cards />;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    portifolioDefaultStocks: state.StocksR.portifolioStocks
+    //  data: state.StocksR.data
   };
 };
 
 const mapDispathToProps = dispatch => {
   return {
     //  byNow: (pId) => { dispatch(actionCreators.buyNow(pId)) },
-    // clearStock: (e) => { dispatch(actionCreators.clearSearchStock(e)) }
+    // onLoad: () => {
+    //   dispatch(actionCreators.loadData());
+    // }
   };
 };
 
