@@ -43,23 +43,6 @@ const SGSchema = new Schema({
   _57D: String,
   _58A: String,
   _24D: String
-});
-
-// /*
-//  "date" : "2016-01-05 00:00:00",
-//     "symbol" : "WLTW",
-//     "open" : 123.43,
-//     "close" : 125.839996,
-//     "low" : 122.309998,
-//     "high" : 126.25,
-//     "volume" : 2163600.0
-// */
-// //let Post = null
-
-// const StocksSchema = new Schema({}, { strict: false });
-
-// //samplestocks
-// //stocks
-// //StocksSchema.index({'date':1})
+}); 
 SG = mongoose.model("sg", SGSchema, "sg");
 module.exports = SG;

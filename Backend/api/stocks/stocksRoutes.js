@@ -21,10 +21,9 @@ Stockrouter.use(
     extended: true
   })
 );
-// Stockrouter.route('/getStocks/:skip').get(restaurantscontroller.getStocks);
-// Stockrouter.route('/getStock/:symbol').get(restaurantscontroller.getStock);
+
+Stockrouter.route("/getSearch").post(restaurantscontroller.getSearch);
 
 Stockrouter.route("/getAll").get(restaurantscontroller.getAll);
-// Stockrouter.route('/getAllSymbol').get(restaurantscontroller.getAllSymbols);
 
 module.exports = Stockrouter;
