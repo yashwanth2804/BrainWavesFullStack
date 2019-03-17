@@ -1,61 +1,84 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 import { connect } from "react-redux";
-
+import { Row, Col, Button } from "antd";
 // import SiderComp from '../SiderComponent/SiderComp'
 // import Stocks from '../Stocks/Stocks';
 // import Company from '../Company/Company'
 import * as actionCreators from "../../actions/index";
 import Cards from "../Cards/Cards";
-
+import "./Home.css";
 class Home extends Component {
-  // state ={
-  //     isSearched:false,
-  //     isDetailedView:false,
-  //     ShowCompanySymbol:""
+  state = {
+    sField: ""
+  };
 
-  // }
-
-  // componentDidMount() {
-  //   this.props.onLoad();
-  // }
   render() {
-    // const isSearch = (c) => {
+    const handleRest = e => {
+      this.setState({ sField: e.target.value });
+    };
 
-    //     this.setState({isSearched:true})
-    // }
-    // const clearSearch = () => {
-    //     this.setState({isSearched:false});
-    //     /// call api to get selected portifolio
-    //     this.props.clearStock(this.props.portifolioDefaultStocks);
-    // }
+    const closeFit = () => {
+      this.props.closeFitFun();
+    };
 
-    // const ShowCompany = (a) =>{
-    //     this.setState({isDetailedView:true,ShowCompanySymbol:a});
+    const Search_ = s => {
+      console.log("saerch fun" + s);
+      this.props.SearchFun(s);
+    };
 
-    // }
-    // const showDefault =() =>{
-    //     this.setState({isDetailedView:false})
-    // }
-
-    // const {  SearchorselstockFun } = this.props;
-
-    return <Cards />;
+    return (
+      <div>
+        <Row>
+          <Col style={{ marginTop: "5%" }} span={8}>
+            <Row>
+              <input
+                className={"g inp"}
+                value={this.state.sField}
+                onChange={e => handleRest(e)}
+                placeholder={
+                  "Search by Our Ref, PartyA, PartB , ISDA (DD/MM/YYYY)    "
+                }
+              />{" "}
+              <Button type="primary" onClick={() => Search_(this.state.sField)}>
+                Search
+              </Button>
+            </Row>
+            <br />
+            <Row>
+              <Button type="dashed" onClick={closeFit}>
+                Close Fit
+              </Button>
+            </Row>
+            <br />
+            <Row>
+              {" "}
+              <Button type="dashed">Unmatched</Button>{" "}
+            </Row>
+          </Col>
+          <Col span={16} style={{ marginTop: "3%" }}>
+            <Cards />
+          </Col>
+        </Row>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    //  data: state.StocksR.data
+    data: state.StocksR.data
   };
 };
 
 const mapDispathToProps = dispatch => {
   return {
-    //  byNow: (pId) => { dispatch(actionCreators.buyNow(pId)) },
-    // onLoad: () => {
-    //   dispatch(actionCreators.loadData());
-    // }
+    closeFitFun: () => {
+      dispatch(actionCreators.closeFit());
+    },
+    SearchFun: g => {
+      dispatch(actionCreators.SearchF(g));
+    }
   };
 };
 

@@ -21,16 +21,8 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    //  portifolioDefaultStocks: state.StocksR.portifolioStocks
-  };
-};
-
 const mapDispathToProps = dispatch => {
   return {
-    //  byNow: (pId) => { dispatch(actionCreators.buyNow(pId)) },
     loadData: () => {
       dispatch(actionCreators.loadData());
     }
@@ -38,6 +30,6 @@ const mapDispathToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispathToProps
 )(App);

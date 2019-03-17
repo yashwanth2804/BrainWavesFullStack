@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "../Card/Card";
 import * as actionCreators from "../../actions/index";
-
+import "../Card/Card.css";
+import { Divider } from "antd";
 class Cards extends Component {
   render() {
     const data__ = this.props.data;
@@ -17,7 +18,21 @@ class Cards extends Component {
       );
     });
 
-    return <div>{y}</div>;
+    return (
+      <div>
+        <span style={{ marginRight: "70%" }}>
+          {" There are in total "}
+          {Object.keys(this.props.data).length} {" records"}
+        </span>
+        <Divider />
+        <tr>
+          <td className="f"> Our reference </td>
+
+          <td className="f"> Client reference </td>
+        </tr>
+        {y}
+      </div>
+    );
   }
 }
 

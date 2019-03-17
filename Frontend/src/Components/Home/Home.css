@@ -1,0 +1,18 @@
+.g {
+  margin: 0;
+  width: calc(100% - 12px);
+  border-radius: 3px;
+  border: 0px;
+  padding: 8px;
+  font-size: 0.9em;
+  background: #e8e7e7;
+  background: var(--theme-top-bar-search-background, #e8e7e7);
+  color: var(--theme-top-bar-search-color, #0a0a0a);
+  -webkit-appearance: none;
+}
+.inp {
+  //padding: 10px;
+  font-weight: bold;
+  border: 2px solid #0e2877;
+  box-shadow: 5px 6px 0 #0e2877;
+}

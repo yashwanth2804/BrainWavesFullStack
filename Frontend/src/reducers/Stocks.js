@@ -1,5 +1,3 @@
-import { DefaultStocks } from "../mock";
-
 const initalState = {
   data: []
 };
@@ -7,10 +5,40 @@ const initalState = {
 const Stocks = (state = initalState, action) => {
   const newState = { ...state };
 
+  //SEARCH_
+  if (action.type === "SEARCH_") {
+    console.log(action.payload);
+    return { ...state, data: action.payload };
+  }
+
   //LOADSTOCK_TABLE
   if (action.type === "LOAD_DATA") {
     console.log(action.payload);
     return { ...state, data: action.payload };
+  }
+
+  //CLOSE_FIT
+  if (action.type === "CLOSE_FIT") {
+    const h = newState.data.filter(f => {
+      const { schemasC, ...SG } = f;
+
+      let c = 0;
+
+      if (schemasC["_30V"] == SG["_30V"]) c++;
+
+      if (schemasC["_36"] == SG["_36"]) c++;
+
+      if (schemasC["_32B"] == SG["_33B"]) c++;
+
+      if (schemasC["_33B"] == SG["_32B"]) c++;
+
+      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&");
+
+      console.log("matched rec " + c);
+      if (c > 1) return f;
+    });
+    console.log(h);
+    return { ...state, data: h };
   }
 
   //ERROR
