@@ -57,7 +57,7 @@ class Card extends Component {
           <td> {schemasC["_20"]} </td>
         </tr>
         <Modal
-          title="Basic Modal"
+          title="Full Details"
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}

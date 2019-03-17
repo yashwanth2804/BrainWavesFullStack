@@ -40,7 +40,11 @@ class Home extends Component {
                   "Search by Our Ref, PartyA, PartB , ISDA (DD/MM/YYYY)    "
                 }
               />{" "}
-              <Button type="primary" onClick={() => Search_(this.state.sField)}>
+              <Button
+                type="primary"
+                block
+                onClick={() => Search_(this.state.sField)}
+              >
                 Search
               </Button>
             </Row>
